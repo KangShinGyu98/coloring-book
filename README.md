@@ -11,11 +11,13 @@
 ## 검증 단계
 
 1. **AI 없이**
+
    - 현재 구현 단계입니다.
    - 이미지 처리 알고리즘만 사용해 사진을 흑백 선화로 변환합니다.
    - 빠르게 프로토타입 가능하지만 복잡한 배경이나 흐릿한 사진에서는 품질 한계가 있습니다.
 
 2. **AI 혼용**
+
    - 기존 이미지 처리로 1차 선화를 만든 뒤, AI를 보조적으로 사용해 선 정리, 배경 제거, 난이도 조절을 개선합니다.
 
 3. **AI**
@@ -73,3 +75,21 @@ python coloring_book_no_ai.py images/cat1.jpg -o outputs/cat1_bold.png --line-wi
 - 난이도별 프리셋 추가: 쉬움, 보통, 자세함
 - 웹 업로드 화면과 다운로드 버튼 구현
 - AI 혼용 방식의 품질 개선 가능성 검증
+
+# 처리요약
+
+| **처리 종류**        | **파라미터**                                               |
+| -------------------- | ---------------------------------------------------------- |
+| 이미지 열기          | 입력 파일: JPG/PNG/WEBP/BMP/TIFF 지원                      |
+| grayscale            | 컬러 이미지를 흑백 명암 이미지로 변환                      |
+| autocontrast         | 자동 대비 보정                                             |
+| GaussianBlur         | radius 5.0                                                 |
+| brightness quantize  | levels 4                                                   |
+| Sobel edge detection | 가로/세로 경계선 강도 계산                                 |
+| edge normalize       | 경계선 강도를 0~255 범위로 정규화                          |
+| threshold            | 25 이상은 검은 선, 미만은 흰 배경                          |
+| MedianFilter         | size 3, 작은 점 노이즈 제거                                |
+| MinFilter            | size 3, 기본 line-width=2라서 선을 조금 굵게 처리          |
+| RGB 변환             | 저장 호환성을 위해 RGB 이미지로 변환                       |
+| PNG/JPG 저장         | 지정한 확장자에 따라 저장                                  |
+| PDF 저장 시 A4 배치  | A4 8.27 x 11.69 inch, 300 dpi, margin 0.35 inch, 중앙 배치 |

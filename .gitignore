@@ -1,2 +1,4 @@
 /outputs/*
 /images/*
+/background_removed/*
+.env
