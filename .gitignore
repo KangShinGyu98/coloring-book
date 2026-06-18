@@ -2,3 +2,7 @@
 /images/*
 /background_removed/*
 .env
+node_modules/
+replicate_outputs/
+stability_outputs/
+npm-debug.log*

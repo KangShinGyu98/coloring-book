@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "scripts": {
+    "replicate:coloring": "node replicate_coloring_book.js",
+    "replicate:dry-run": "node replicate_coloring_book.js --dry-run",
+    "replicate:all": "node replicate_coloring_book.js --all",
+    "replicate:all:dry-run": "node replicate_coloring_book.js --dry-run --all",
+    "stability:coloring": "node stability_coloring_book.js",
+    "stability:dry-run": "node stability_coloring_book.js --dry-run",
+    "stability:all": "node stability_coloring_book.js --all",
+    "stability:all:dry-run": "node stability_coloring_book.js --dry-run --all"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "replicate": "^1.4.0"
+  }
+}
